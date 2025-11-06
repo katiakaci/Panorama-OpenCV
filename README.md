@@ -1,24 +1,40 @@
-# panorama-opencv
-Application de fusion d’images pour générer un panorama à l’aide d’OpenCV
+# Panorama avec OpenCV 📸
 
-# MTI805 Lab 02
+Ce projet présente une application Python utilisant OpenCV pour fusionner plusieurs images prises sous différents angles afin de créer un panorama complet, à la manière des téléphones intelligents. Il inclut également une étape de recadrage automatique pour supprimer les bordures noires et obtenir une image finale propre.
 
-Voici l'enoncé : [Énoncé](https://cours.etsmtl.ca/mti805/private/labos/laboratoire2.pdf)
+Pour créer l'application de base, le tutoriel suivant a été suivi : [Image Stitching with OpenCV and Python](https://pyimagesearch.com/2018/12/17/image-stitching-with-opencv-and-python/)
 
-Pour faire l'application de base, le tutoriel suivant a été suivi: [Tutoriel](https://pyimagesearch.com/2018/12/17/image-stitching-with-opencv-and-python/).
+## Aperçu du projet
 
-Voici les étapes importantes à savoir pour démarrer le code.
+Ci-dessous un exemple : images d'entrée tirées de `images/Test1/` et le panorama de sortie dans `resultats/Test1/`
 
-Un premier code simple a été fait sous `image_stitching_simple.py`. Par contre, ce code ne fait que faire le stitching des images, pour faire le crop après on utilise le code `image_stitching.py`. Dans ce code il y a fallu faire des petits tours de passe passe pour faire le cropping adéquatement.
+| Images d'entrée | Résultat |
+|---|---|
+| ![entrée 1](images/Test1/PXL_20250202_234440928.jpg)<br>![entrée 2](images/Test1/PXL_20250202_234443703.jpg)<br>![entrée 3](images/Test1/PXL_20250202_234446223.jpg) | ![résultat](resultats/Test1/output_final.png) |
 
-### Start Scripts
 
-Pour lancer les scripts, simplement créer un nouveau dossier avec les images comme suit `images/TestX`. C'est ces images qui seront utilisés par le Stitcher.
+## Lancer le script
 
-Ensuite faire la commande suivante : `python image_stitching.py --images images/TestX --output resultats/TestX/output_final.png --crop 1`
+1. Placer les images dans un dossier du type `images/TestX/`
+2. Lancer le stitching avec :
 
-*ATTENTION*: Le code peut prendre un certain temps a finir de runner. Les images en output ne seront pas visibles avant la fin.
+```powershell
+python image_stitching.py --images images/TestX --output resultats/TestX/output_final.png --crop 1
+```
 
-Le parametre crop permets de choisir si on veut crop l'image après avoir fait le stitching ou non.
-- crop 1 : le croping est fait
-- crop 0 : le croping n'est pas fait
+- `--images` : chemin du dossier contenant les images source
+- `--output` : chemin du fichier de sortie
+- `--crop` : 1 pour activer le recadrage automatique, 0 pour le désactiver
+
+## Fonctionnalités principales
+
+- Fusion automatique d’un ensemble d’images en un panorama
+- Alignement des images basé sur l’algorithme SIFT
+- Détection et correction des contours noirs internes
+- Recadrage automatique du panorama final
+
+## Références
+
+- Brown, M., & Lowe, D. G. (2007). Automatic Panoramic Image Stitching using Invariant Features.
+- Rosebrock, A. (2018). Image Stitching with OpenCV and Python. PyImageSearch Blog.
+- Kennerley, M. (2021). Comparing SIFT and ORB for Feature Detection.
